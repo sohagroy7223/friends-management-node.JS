@@ -4,6 +4,7 @@ const app = express();
 const port = process.env.PORT || 5000;
 
 app.use(cors());
+app.use(express.json());
 
 app.get("/", (req, res) => {
   res.send("hello World this is friends server it's work");
@@ -18,6 +19,10 @@ const friends = [
 
 app.get("/friends", (req, res) => {
   res.send(friends);
+});
+
+app.post("/friends", (req, res) => {
+  console.log("for post method call ", req.body);
 });
 
 app.listen(port, () => {
