@@ -23,6 +23,10 @@ app.get("/friends", (req, res) => {
 
 app.post("/friends", (req, res) => {
   console.log("for post method call ", req.body);
+  const newFriends = req.body;
+  newFriends.id = friends.length + 1;
+  friends.push(newFriends);
+  res.send(newFriends);
 });
 
 app.listen(port, () => {

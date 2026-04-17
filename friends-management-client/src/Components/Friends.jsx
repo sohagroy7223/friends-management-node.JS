@@ -1,15 +1,16 @@
-import React, { use } from "react";
+import React, { use, useState } from "react";
 
 const Friends = ({ friendsPromise }) => {
-  const friends = use(friendsPromise);
+  const allFriends = use(friendsPromise);
   //   console.log(friends);
+  const [friends, setFriends] = useState(allFriends);
 
   const handelAddFriend = (e) => {
     e.preventDefault();
     const name = e.target.name.value;
     const email = e.target.email.value;
     // console.log(name, email);
-    const newFriends = { name, email };
+    const newFriend = { name, email };
 
     // send data to the server
 
@@ -18,11 +19,13 @@ const Friends = ({ friendsPromise }) => {
       headers: {
         "content-type": "application/json",
       },
-      body: JSON.stringify(newFriends),
+      body: JSON.stringify(newFriend),
     })
       .then((res) => res.json())
       .then((data) => {
         console.log("get add after post", data);
+        const newFriends = [...friends, data];
+        setFriends(newFriends);
       });
   };
 
