@@ -6,8 +6,15 @@ app.get("/", (req, res) => {
   res.send("hello World this is friends server it's work");
 });
 
+const friends = [
+  { name: "akash", email: "akash@gmail.com", id: 1 },
+  { name: "sumon", email: "sumon@gmail.com", id: 2 },
+  { name: "kajol", email: "kajol@gmail.com", id: 3 },
+  { name: "dipto", email: "dipto@gmail.com", id: 4 },
+];
+
 app.get("/friends", (req, res) => {
-  res.send("all friends is here");
+  res.send(friends);
 });
 
 app.listen(port, () => {
