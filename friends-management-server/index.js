@@ -39,6 +39,10 @@ app.get("/books", (req, res) => {
   res.send(books);
 });
 
+app.post("/books", (req, res) => {
+  console.log("book post method call");
+});
+
 app.listen(port, () => {
   console.log(`this app listening on port :${port}`);
 });
