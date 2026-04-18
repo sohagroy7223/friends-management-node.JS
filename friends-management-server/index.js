@@ -40,7 +40,12 @@ app.get("/books", (req, res) => {
 });
 
 app.post("/books", (req, res) => {
-  console.log("book post method call");
+  console.log("book post method call", req.body);
+  const newBook = req.body;
+  // console.log(newBook);
+  newBook.id = books.length + 1;
+  books.push(newBook);
+  res.send(newBook);
 });
 
 app.listen(port, () => {

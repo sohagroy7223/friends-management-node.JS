@@ -1,14 +1,32 @@
 import React from "react";
+import { useState } from "react";
 import { use } from "react";
 
 const Books = ({ booksPromise }) => {
-  const books = use(booksPromise);
+  const allBooks = use(booksPromise);
+  const [books, setBooks] = useState(allBooks);
   const handelAddBook = (e) => {
     e.preventDefault();
-    const book = e.target.name.value;
-    console.log(book);
+    const name = e.target.name.value;
+    // console.log(book);
+    const newBook = { name };
+    // send data to server
+
+    fetch("http://localhost:5000/books", {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(newBook),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        // console.log("book post method call", data);
+        const newBooks = [...books, data];
+        setBooks(newBooks);
+      });
   };
-  console.log(books);
+  //   console.log(books);
   return (
     <div>
       <div>
