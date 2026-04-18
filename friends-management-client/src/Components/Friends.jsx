@@ -29,6 +29,10 @@ const Friends = ({ friendsPromise }) => {
       });
   };
 
+  const handelAddBook = (e) => {
+    e.preventDefault();
+  };
+
   return (
     <div>
       <h3>add user</h3>
@@ -46,6 +50,15 @@ const Friends = ({ friendsPromise }) => {
             {friend.name},email: {friend.email}
           </p>
         ))}
+      </div>
+
+      <div>
+        <h3>add book</h3>
+        <form onSubmit={handelAddBook}>
+          <input type="text" placeholder="add book name" />
+          <br />
+          <input type="submit" value="submit" />
+        </form>
       </div>
     </div>
   );

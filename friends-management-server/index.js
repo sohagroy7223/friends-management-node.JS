@@ -29,6 +29,16 @@ app.post("/friends", (req, res) => {
   res.send(newFriends);
 });
 
+const books = [
+  { name: "Don Quixote", id: 1 },
+  { name: "Treasure Island", id: 2 },
+  { name: "Jane Eyre", id: 3 },
+];
+
+app.get("/books", (req, res) => {
+  res.send(books);
+});
+
 app.listen(port, () => {
   console.log(`this app listening on port :${port}`);
 });
