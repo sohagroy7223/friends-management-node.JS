@@ -31,6 +31,8 @@ const Friends = ({ friendsPromise }) => {
 
   const handelAddBook = (e) => {
     e.preventDefault();
+    const book = e.target.name.value;
+    console.log(book);
   };
 
   return (
@@ -55,7 +57,7 @@ const Friends = ({ friendsPromise }) => {
       <div>
         <h3>add book</h3>
         <form onSubmit={handelAddBook}>
-          <input type="text" placeholder="add book name" />
+          <input type="text" name="name" placeholder="add book name" />
           <br />
           <input type="submit" value="submit" />
         </form>
